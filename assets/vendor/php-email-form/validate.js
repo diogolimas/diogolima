@@ -13,18 +13,24 @@
       event.preventDefault();
 
       let thisForm = this;
-
+      /*
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
         displayError(thisForm, 'The form action property is not set!')
         return;
-      }
+      }*/
       thisForm.querySelector('.loading').classList.add('d-block');
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
+
+      thisForm.querySelector('.sent-message').classList.add('d-block');
+      thisForm.reset(); 
+
+    });
+      /*
       let formData = new FormData( thisForm );
 
       if ( recaptcha ) {
@@ -48,7 +54,7 @@
       }
     });
   });
-
+  
   function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
@@ -81,5 +87,6 @@
     thisForm.querySelector('.error-message').innerHTML = error;
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
+    
 
 })();
